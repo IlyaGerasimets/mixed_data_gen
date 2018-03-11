@@ -6,8 +6,11 @@ public class DataModelGeneratorArguments {
     @Parameter(names = "-folder", description = "Path to the folder to save the generated data files")
     private String folder = ".";
 
-    @Parameter(names = "-prefix", description = "File name perfix")
+    @Parameter(names = "-prefix", description = "File name prefix")
     private String prefix = "random";
+
+    @Parameter(names = "-id", description = "Append model identifier (UUID) as a prefix to the files")
+    private boolean generateModelId = false;
 
     @Parameter(names = "-seed", description = "Pseudo random number generator initialization value")
     private long seed = 0;
@@ -49,6 +52,15 @@ public class DataModelGeneratorArguments {
 
     public DataModelGeneratorArguments setPrefix(String prefix) {
         this.prefix = prefix;
+        return this;
+    }
+
+    public boolean isGenerateModelId() {
+        return generateModelId;
+    }
+
+    public DataModelGeneratorArguments setGenerateModelId(boolean generateModelId) {
+        this.generateModelId = generateModelId;
         return this;
     }
 

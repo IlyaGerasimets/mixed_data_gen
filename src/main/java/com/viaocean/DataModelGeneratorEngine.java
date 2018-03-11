@@ -34,7 +34,12 @@ public class DataModelGeneratorEngine {
                 + arguments.getLinearModelColumnCount()
                 + arguments.getRandomNumericColumnCount()
                 + arguments.getRandomTextColumnCount();
-        String prefix = arguments.getPrefix() + "_" + UUID.randomUUID() + "_col_" + totalColumns;
+        String prefix = arguments.getPrefix();
+        if(arguments.isGenerateModelId()) {
+            prefix += "_" + UUID.randomUUID();
+        }
+        prefix += "_seed_" + arguments.getSeed();
+        prefix += "_col_" + totalColumns;
 
         Path folder = Paths.get(arguments.getFolder());
 
